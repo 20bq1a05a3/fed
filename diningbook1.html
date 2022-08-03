@@ -1,0 +1,207 @@
+<html>
+<head>
+<title>Dine booking form</title>
+<script>
+function formValidation()
+{
+var uname = document.registration.username;
+var venue = document.registration.venue;
+var umobile = document.registration.mobile;
+var number = document.registration.number;
+var uemail = document.registration.email;
+var ac = document.registration.ac;
+var nonac = document.registration.nonac;
+var southindian = document.registration.southindian
+var northindian = document.registration.northindian
+var chinese = document.registration.chinese
+var western = document.registration.western
+if(allLetter(uname))
+{
+if(venueselect(venue))
+{
+if(allnumeric(umobile))
+{
+if(allnumeric1(number))
+{
+if(ValidateEmail(uemail))
+{
+if(validRoomStatus(ac,nonac))
+{
+if(validFood(southindian,northindian,chinese,western))
+}
+{
+}
+}
+}
+}
+}
+}
+}
+}
+}
+return false;
+
+}
+function allLetter(uname)
+{
+var letters = /^[A-Za-z]+$/;
+if(uname.value.match(letters))
+{
+return true;
+}
+else
+{
+alert('Username must have alphabet characters only');
+uname.focus();
+return false;
+}
+}
+function venueselect(venue)
+{
+if(venue.value == "Default")
+{
+alert('Select your venue from the list');
+venue.focus();
+return false;
+}
+else
+{
+return true;
+}
+}
+function allnumeric(umobile)
+{
+var numbers = /^[0-9]+$/;
+if(umobile.value.match(numbers))
+{
+return true;
+}
+else
+{
+alert('mobile number must have numeric characters only');
+umobile.focus();
+return false;
+}
+}
+function allnumeric1(number)
+{
+var numbers = /^[0-9]+$/;
+if(number.value.match(numbers))
+{
+return true;
+}
+else
+{
+alert('number of members must have numeric characters only');
+number.focus();
+return false;
+}
+}
+function ValidateEmail(uemail)
+{
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(uemail.value.match(mailformat))
+{
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");
+uemail.focus();
+return false;
+}
+}
+function validFood(southindian,northindian,chinese,western)
+{
+x=0;
+
+if(southindian.checked)
+{
+x++;
+} if(northindian.checked)
+{
+x++;
+}
+if(chinese.checked)
+{
+x++;
+}
+if(western.checked)
+{
+x++;
+}
+if(x==0)
+{
+alert('Select southindian/northindian/chinese/western');
+ac.focus();
+return false;
+}
+}
+function validRoomStatus(ac,nonac)
+{
+x=0;
+
+if(ac.checked)
+{
+x++;
+} if(nonac.checked)
+{
+x++;
+}
+if(x==0)
+{
+alert('Select ac/nonac');
+ac.focus();
+return false;
+}
+else
+{
+alert('Form Succesfully Submitted');
+window.location.reload()
+return true;
+}
+}
+</script>
+</head>
+<body onload="document.registration.uname.focus();">
+<form name='registration' onSubmit="return formValidation();">
+<table>
+<tr>
+<td><label>Name:</label></td>
+<td><input type="text" name="username" size="50" /></td>
+</tr><tr>
+<td><label>Contact no:</label></td>
+<td><input type="number" name="mobile" /></td>
+</tr><tr>
+<td><label>Number of members:</label></td>
+<td><input type="number" name="number" /></td>
+</tr><tr>
+<td><label>Email:</label></td>
+<td><input type="text" name="email" size="50" /></td>
+</tr><tr>
+<td><label>Type of Food:</label></td>
+<td><input type="checkbox" name="southindian" value="southindian" checked /><span>SouthIndian</span>
+<input type="checkbox" name="northindian" value="northindian" /><span>NorthIndian</span>
+<input type="checkbox" name="chinese" value="chinese" /><span>Chinese</span>
+<input type="checkbox" name="western" value="western" /><span>Western</span></td>
+</tr><tr>
+<td><label>Room Status:</label></td>
+<td><input type="radio" name="ac" value="ac" /><span>Ac</span>
+<input type="radio" name="nonac" value="nonac" /><span>NonAc</span></td>
+</tr><tr>
+<td><label>Venue:</label></td>
+<td><select name="venue">
+<option selected="" value="Default">(Please select a venue)</option>
+<option value="Arena">Arena</option>
+<option value="Fiesta">Fiesta</option>
+<option value="Vista">Vista</option>
+<option value="Oasis">Oasis</option>
+<option value="Amobea">Amobea</option>
+</select></td>
+</tr><tr>
+<td><input type="submit" name="submit" value="Submit" /></td>
+<td><input type="submit" name="reset" value="Reset" /></td>
+</table>
+</form>
+</body>
+</html>
