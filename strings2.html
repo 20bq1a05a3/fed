@@ -1,0 +1,28 @@
+<html>
+<body>
+<p>Reversing a string</p><br>
+<button onclick="ReverseString('hello')">click here</button>
+<p id="demo"></p><script>
+function ReverseString(str) {
+ 
+    if(!str || str.length < 2 ||
+            typeof str!== 'string') {
+        return 'Not valid';
+    }
+     
+    
+    const revArray = [];
+    const length = str.length - 1;
+     
+   
+    for(let i = length; i >= 0; i--) {
+        revArray.push(str[i]);
+    }
+     
+    document.write(revArray.join(''));
+}
+ 
+
+</script>
+</body>
+</html>
